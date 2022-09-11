@@ -95,13 +95,13 @@ const recursiveAndbuild = (
     build(root);
   })();
 
-  writeFileSync(
-    join(denoSrcRoot, 'mod.ts'),
-    `export * from './index.ts';\r\n`,
-    {
-      encoding: 'utf-8',
-    },
-  );
+  const mod = `import Convert from './index.ts';
+export * from './index.ts';
+export default Convert;\r\n`;
+
+  writeFileSync(join(denoSrcRoot, 'mod.ts'), mod, {
+    encoding: 'utf-8',
+  });
 
   copyFile(
     `${root.length === 0 ? '.' : root}/README.md`,
