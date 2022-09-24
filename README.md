@@ -72,7 +72,6 @@ import sptruzConvert from '@sptruz/convert';
 
   // output: hsl(0,100%,50%)
 })();
-
 ```
 
 ## API
