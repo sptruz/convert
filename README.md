@@ -41,6 +41,16 @@ or letest version:
 import * as sptruzConvert from 'https://deno.land/x/sptruz_convert/mod.ts';
 ```
 
+### CDN
+
+```html
+<!-- jsDelivr -->
+<script src="https://cdn.jsdelivr.net/npm/@sptruz/convert/lib/index.umd.js"></script>
+
+<!-- Unpkg -->
+<script src="https://unpkg.com/@sptruz/convert/lib/index.umd.js"></script>
+```
+
 > NOTE: There isn't much of a change in how it's used, but the remainder of this README assumes you're using npm and importing straight from the @sptruz/convert.
 
 ## Basic usage
@@ -49,125 +59,56 @@ import * as sptruzConvert from 'https://deno.land/x/sptruz_convert/mod.ts';
 import sptruzConvert from '@sptruz/convert';
 
 (() => {
-  const hex2rgb_RED = sptruzConvert.hex.rgb('#ff0000');
-  console.log(hex2rgb_RED);
+  // HEX color
 
+  // convert hex to rgb
+  console.log(sptruzConvert.hex.rgb('#ff0000'));
   // output: [255, 0, 0, 1]
 
-  const rgb2string_RED = sptruzConvert.rgb.string(hex2rgb_RED);
+  /* ***************** */
 
-  console.log(rgb2string_RED);
+  // HSL color
 
-  // output: rgba(255,0,0,1)
+  // convert hsl to rgb
+  console.log(sptruzConvert.hsl.rgb([0, 100, 50]));
+  // output: [255, 0, 0]
 
-  const hex2hsl_RED = sptruzConvert.rgb.hsl(sptruzConvert.hex.rgb('#ff0000'));
+  // convert hsl to string
+  console.log(sptruzConvert.hsl.string([0, 100, 50]));
+  // output: 'hsl(0, 100%, 50%)'
 
-  console.log(hex2hsl_RED);
+  /* ***************** */
 
+  // RGB color
+
+  // convert rgb to hex
+  console.log(sptruzConvert.rgb.hex([255, 0, 0]));
+  // output: '#ff0000'
+
+  // convert rgb to hsl
+  console.log(sptruzConvert.rgb.hsl([255, 0, 0]));
   // output: [0, 100, 50]
 
-  const hsl2string_RED = sptruzConvert.hsl.string(hex2hsl_RED);
-
-  console.log(hsl2string_RED);
-
-  // output: hsl(0,100%,50%)
+  // convert rgb to string
+  console.log(sptruzConvert.rgb.string([255, 0, 0]));
+  // output: 'rgb(255, 0, 0)'
 })();
 ```
 
-## API
+## Supports
 
-### hex
+- HEX | example: #ff0000
+  - RGB
+- HSL | example: [0, 100, 50]
+  - RGB
+  - String
+- RGB | example: [255, 0, 0]
+  - HEX
+  - HSL
+  - String
 
-#### hex.rgb(hex)
+## License
 
-Converts a hex color to rgb.
+@sptruz/convert is licensed under the [MIT License](https://raw.githubusercontent.com/sptruz/convert/main/LICENSE).
 
-```ts
-import sptruzConvert from '@sptruz/convert';
-
-(() => {
-  const hex2rgb_RED = sptruzConvert.hex.rgb('#ff0000');
-  console.log(hex2rgb_RED);
-
-  // output: [255, 0, 0, 1]
-})();
-```
-
-### hsl
-
-#### hsl.rgb(hsl)
-
-Converts a hsl color to rgb.
-
-```ts
-import sptruzConvert from '@sptruz/convert';
-
-(() => {
-  const hsl2rgb_RED = sptruzConvert.hsl.rgb([0, 100, 50]);
-  console.log(hsl2rgb_RED);
-
-  // output: [255, 0, 0, 1]
-})();
-```
-
-#### hsl.string(hsl)
-
-Converts a hsl color to string.
-
-```ts
-import sptruzConvert from '@sptruz/convert';
-
-(() => {
-  const hsl2string_RED = sptruzConvert.hsl.string([0, 100, 50]);
-  console.log(hsl2string_RED);
-
-  // output: hsl(0,100%,50%)
-})();
-```
-
-### rgb
-
-#### rgb.hex(rgb)
-
-Converts a rgb color to hex.
-
-```ts
-import sptruzConvert from '@sptruz/convert';
-
-(() => {
-  const rgb2hex_RED = sptruzConvert.rgb.hex([255, 0, 0, 1]);
-  console.log(rgb2hex_RED);
-
-  // output: #ff0000
-})();
-```
-
-#### rgb.hsl(rgb)
-
-Converts a rgb color to hsl.
-
-```ts
-import sptruzConvert from '@sptruz/convert';
-
-(() => {
-  const rgb2hsl_RED = sptruzConvert.rgb.hsl([255, 0, 0, 1]);
-  console.log(rgb2hsl_RED);
-
-  // output: [0, 100, 50]
-})();
-```
-
-#### rgb.string(rgb)
-
-Converts a rgb color to string.
-
-```ts
-import sptruzConvert from '@sptruz/convert';
-
-(() => {
-  const rgb2string_RED = sptruzConvert.rgb.string([255, 0, 0, 1]);
-  console.log(rgb2string_RED);
-
-  // output: rgba(255,0,0,1)
-})();
-```
+Created with ♥ by [@MKAbuMattar](https://github.com/MKAbuMattar).
